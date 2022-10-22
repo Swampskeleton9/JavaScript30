@@ -42,7 +42,25 @@
 
 <button></button>
 <script>
+const divs = document.querySelectorAll('div');
+const button = document.querySelector('button');
 
+function logText(e) {
+  console.log(this.classList.value);
+ // e.stopPropagation(); //stop bubbling!
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false, //bubbles up
+  //capture: true ;;;top down
+  once: true
+}));
+
+button.addEventListener('click', () => {
+  console.log('Click!!');
+}, {
+  once: true //clicked once and never again used for things like store check outs!
+})
 </script>
 </body>
 </html>
